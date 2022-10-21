@@ -15,32 +15,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-cloudbuild
+  name: nodejs-cloudbuild
   labels:
-    app: hello-cloudbuild
+    app: nodejs-cloudbuild
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-cloudbuild
+      app: nodejs-cloudbuild
   template:
     metadata:
       labels:
-        app: hello-cloudbuild
+        app: nodejs-cloudbuild
     spec:
       containers:
-      - name: hello-cloudbuild
-        image: asia-east1-docker.pkg.dev/wingwill-demo-lab-molly/my-repository/hello-cloudbuild:ae3fde7
+      - name: nodejs-cloudbuild
+        image: asia-east1-docker.pkg.dev/wingwill-demo-lab-molly/my-repository/nodejs-cloudbuild:ae3fde7
         ports:
         - containerPort: 8080
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: hello-cloudbuild
+  name: nodejs-cloudbuild
 spec:
   selector:
-    app: hello-cloudbuild
+    app: nodejs-cloudbuild
   ports:
   - protocol: TCP
     port: 80
